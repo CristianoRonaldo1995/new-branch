@@ -1,17 +1,31 @@
 import java.util.HashMap;
 
+import com.google.gson.Gson;
+
 public class serviceClass {
 	
-	private HashMap<accountClass, Integer> hmap = new HashMap<accountClass, Integer>();
+	private HashMap<Integer, accountClass> hmap = new HashMap<Integer, accountClass>();
+	private Gson gson = new Gson();
+	private int counter = 0;
 	
-	public void adding(accountClass firstName, int accountNumber) {
+	public void adding(accountClass firstName) {
 		
-		hmap.put(firstName, accountNumber);
+		hmap.put(counter, firstName);
+		counter++;
 	}
 
 	public void retrieving() {
-		System.out.println(hmap.toString());
+		
+		for(accountClass account: hmap.values()) 
+		{
+			System.out.println(account.getFirstName());
+		}
 	}
 	
+	public void convertingJavaObjToJson() {
+		
+		String json = gson.toJson(hmap);
+		System.out.println(json);
+	}
 
 }

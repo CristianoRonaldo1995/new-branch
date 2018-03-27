@@ -5,6 +5,12 @@ public class accountClass {
 	private String lastName;
 	private int accountNumber;
 	
+	public accountClass(String firstName, String lastName, int accountNumber) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.accountNumber = accountNumber;
+	}
+	
 	public int getAccountNumber() {
 		return accountNumber;
 	}
