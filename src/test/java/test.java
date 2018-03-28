@@ -18,10 +18,11 @@ public class test {
 	@Test
 	public void lookingForValuesInHMAP() {
 		
-		// assertEquals(hmap(), IsMapContaining.hasValue("naveed"));
+		
 		 accountClass ac = new accountClass("naveed", "farouq", 23);
-		 int counter = hmap.countAccount("naveed");
-		 assertEquals(1, counter);
+		 hmap.adding(ac);
+		 int count = hmap.countAccount("naveed");
+		 assertEquals(1, count);
 		 
 	}
 

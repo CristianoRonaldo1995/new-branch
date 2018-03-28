@@ -1,4 +1,6 @@
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import com.google.gson.Gson;
 
@@ -8,10 +10,14 @@ public class serviceClass {
 	private Gson gson = new Gson();
 	private int counter = 0;
 	
-	public void adding(accountClass firstName) {
+	public void adding(accountClass acc) {
+		if(exists(acc.getFirstName())) {
+			counter ++;
+		} else {
+			hmap.put(counter, acc);
+		}
 		
-		hmap.put(counter, firstName);
-		counter++;
+	
 	}
 
 	public void retrieving() {
@@ -26,6 +32,20 @@ public class serviceClass {
 		
 		String json = gson.toJson(hmap);
 		System.out.println(json);
+	}
+
+	public int countAccount(String string) {
+	
+		return counter;
+	}
+	
+	private boolean exists(String firstName) {
+		for(Map.Entry<Integer, accountClass> account : hmap.entrySet()) {
+			if(account.getValue().getFirstName().equals(firstName)) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	
